@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Entrenar{% endblock %}
+{% block content %}
+<div class="window">
+  <div class="window-header">Entrenar</div>
+
+  <label>Seleccionar algoritmo</label>
+  <select id="selectAlgoritmo">
+    <option value="id3">ID3 (Árbol de decisión, entropía)</option>
+    <option value="knn">K-Vecinos más cercanos (K-NN)</option>
+  </select>
+
+  <label>Seleccionar dataset</label>
+  <select id="selectDataset"></select>
+
+  <label>Columna objetivo (clase)</label>
+  <input type="text" id="targetColumn" value="species">
+
+  <label>Nombre del modelo a guardar</label>
+  <input type="text" id="modelName" placeholder="ej. iris_random_forest">
+
+  <label>Hold-out %</label>
+  <input type="number" id="holdoutPct" value="20" min="5" max="50">
+
+  <button id="btnTrain" class="primary">Train</button>
+
+  <h3>Resultados</h3>
+  <table id="tablaResultados">
+    <thead>
+      <tr><th>Clase</th><th>Precision</th><th>Recall</th><th>F1-score</th><th>Support</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h3>Matriz de confusión</h3>
+  <img id="confMatrixImg" alt="Se genera al entrenar" style="width:100%; display:none;">
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/train.js') }}"></script>
+{% endblock %}

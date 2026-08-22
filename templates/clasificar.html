@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Clasificar{% endblock %}
+{% block content %}
+<div class="window">
+  <div class="window-header">Clasificar</div>
+
+  <label>Seleccionar modelo</label>
+  <select id="selectModelo"></select>
+
+  <h3>Nuevo ejemplo</h3>
+  <div id="atributosContainer"><!-- Atrib1, Atrib2 ... AtribN se generan aqui --></div>
+
+  <button id="btnClasificar" class="primary">Classify</button>
+
+  <div class="resultado-box">
+    <p><strong>Resultado:</strong> <span id="resultadoTexto">--</span></p>
+    <p><strong>Explicación:</strong></p>
+    <p id="explicacionTexto">--</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/classify.js') }}"></script>
+{% endblock %}
